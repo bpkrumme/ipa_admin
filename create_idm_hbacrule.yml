@@ -1,5 +1,5 @@
 ---
-- name: Create HBAC rule in IDM 
+- name: Create HBAC rule in freeipa 
   hosts: "{{ HOSTS | default('ipaserver') }}"
   vars_files: idm_admin_creds.yml
   collections:

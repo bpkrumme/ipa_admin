@@ -1,11 +1,11 @@
 ---
-- name: restore a preserved user in our IDM instance
+- name: restore a preserved user in our freeipa instance
   hosts: "{{ HOSTS | default('ipaserver') }}"
   vars_files: idm_admin_creds.yml
   collections:
     - freeipa.ansible_freeipa
   tasks:
-    - name: Restore a preserved an IDM User
+    - name: Restore a preserved an ipa User
       ipauser:
         ipaadmin_password: "{{ ipa_admin_password }}"
         name: "{{ ipa_user_name }}"
