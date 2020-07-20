@@ -1,0 +1,15 @@
+---
+- name: Add HBAC hostgroup to rule in IDM 
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: idm_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: add hostgroup to a HBAC rule
+      ipahbacrule:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_hbac_rule_name }}"
+        hostgroup: "{{ ipa_hbac_hostgroup_name }}"
+        action: member
+        
