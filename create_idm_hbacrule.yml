@@ -1,0 +1,11 @@
+---
+- name: Create HBAC rule in IDM 
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: idm_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: create a HBAC rule
+      ipahbacrule:
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_hbac_rule_name }}"

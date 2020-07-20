@@ -1,0 +1,13 @@
+---
+- name: remove and preserve a user in our IDM instance
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: idm_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: Remove and preserve an IDM User
+      ipauser:
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_user_name }}"
+        preserve: yes
+        state: absent
