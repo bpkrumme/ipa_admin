@@ -7,5 +7,6 @@
   tasks:
     - name: create a HBAC rule
       ipahbacrule:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
         name: "{{ ipa_hbac_rule_name }}"
