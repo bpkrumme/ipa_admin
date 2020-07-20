@@ -1,7 +1,7 @@
 ---
 - name: Create HBAC rule in freeipa 
   hosts: "{{ HOSTS | default('ipaserver') }}"
-  vars_files: idm_admin_creds.yml
+  vars_files: ipa_admin_creds.yml
   collections:
     - freeipa.ansible_freeipa
   tasks:

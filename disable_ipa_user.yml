@@ -1,13 +1,12 @@
 ---
-- name: remove and preserve a user in our freeipa instance
+- name: disable a user in our freeipa instance
   hosts: "{{ HOSTS | default('ipaserver') }}"
-  vars_files: idm_admin_creds.yml
+  vars_files: ipa_admin_creds.yml
   collections:
     - freeipa.ansible_freeipa
   tasks:
-    - name: Remove and preserve an ipa User
+    - name: Disable an ipa User
       ipauser:
         ipaadmin_password: "{{ ipa_admin_password }}"
         name: "{{ ipa_user_name }}"
-        preserve: yes
-        state: absent
+        state: disabled

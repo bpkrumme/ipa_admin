@@ -1,12 +1,12 @@
 ---
-- name: enable a disabled user in our freeipa instance
+- name: restore a preserved user in our freeipa instance
   hosts: "{{ HOSTS | default('ipaserver') }}"
-  vars_files: idm_admin_creds.yml
+  vars_files: ipa_admin_creds.yml
   collections:
     - freeipa.ansible_freeipa
   tasks:
-    - name: Enable an ipa User
+    - name: Restore a preserved an ipa User
       ipauser:
         ipaadmin_password: "{{ ipa_admin_password }}"
         name: "{{ ipa_user_name }}"
-        state: enabled
+        state: undeleted
