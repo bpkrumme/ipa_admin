@@ -1,0 +1,20 @@
+---
+- name: create or update a sudo rule in our freeipa instance
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: ipa_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: Create or update an ipa sudo rule
+      ipasudorule:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_sudo_command }}"
+        usercategory: "{{ ipa_sudo_user_category | default(omit) }}"
+        hostcategory: "{{ ipa_sudo_host_category | default(omit) }}"
+        cmdcategory: "{{ ipa_sudo_cmd_category | default(omit) }}"
+        runasusercategory: "{{ ipa_sudo_runasuser_category | defualt(omit) }}"
+        runasgroupcategory: "{{ ipa_sudo_runasgroup_category | defualt(omit) }}"
+        hostgroup: "{{ ipa_sudo_hostgroup }}"
+        group: "{{ ipa_sudo_group }}"
+        allow_sudocmdgroup: "{{ ipa_sudo_cmd_group }}"
