@@ -1,0 +1,12 @@
+---
+- name: create a sudo command in our freeipa instance
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: ipa_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: Create an ipa sudo command
+      ipasudocmd:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        sudocmd: "{{ ipa_sudo_command }}"
