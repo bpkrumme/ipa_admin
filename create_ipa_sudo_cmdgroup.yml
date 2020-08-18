@@ -10,3 +10,7 @@
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
         name: "{{ ipa_sudo_cmd_group }}"
+<<<<<<< HEAD
+=======
+        sudocmd: "{{ ipa_sudo_command }}"
+>>>>>>> c8bbdf9702690802ce6ae18c7ce0264e258fd6c0
