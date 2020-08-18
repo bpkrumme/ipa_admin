@@ -16,7 +16,7 @@
         email: "{{ email_address }}"
         password: "{{ ipa_user_pass }}"
         update_password: on_create
-        
+
     - name: add user to ipa group
       ipagroup:
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
@@ -24,3 +24,4 @@
         name: "{{ ipa_group_name }}"
         user:
           - "{{ ipa_user_name }}"
+        action: member

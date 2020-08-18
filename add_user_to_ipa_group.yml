@@ -12,3 +12,4 @@
         name: "{{ ipa_group_name }}"
         user:
           - "{{ ipa_user_name }}"
+        action: member
