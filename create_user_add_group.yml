@@ -1,0 +1,27 @@
+---
+- name: create a user in our freeipa instance and add to an existing group
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: ipa_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: Create an ipa User
+      ipauser:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_user_name }}"
+        first: "{{ firstname }}"
+        last: "{{ lastname }}"
+        phone: "{{ phone_number }}"
+        email: "{{ email_address }}"
+        password: "{{ ipa_user_pass }}"
+        update_password: on_create
+
+    - name: add user to ipa group
+      ipagroup:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_group_name }}"
+        user:
+          - "{{ ipa_user_name }}"
+        action: member
