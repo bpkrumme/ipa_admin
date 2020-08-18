@@ -1,0 +1,14 @@
+---
+- name: add a user to a group in our freeipa instance
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: ipa_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: add user to ipa group
+      ipagroup:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_group_name }}"
+        user:
+          - "{{ ipa_user_name }}"
