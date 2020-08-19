@@ -1,11 +1,11 @@
 ---
-- name: create a sudo command group in our freeipa instance
+- name: add a sudo command to a command group
   hosts: "{{ HOSTS | default('ipaserver') }}"
   vars_files: ipa_admin_creds.yml
   collections:
     - freeipa.ansible_freeipa
   tasks:
-    - name: Create an ipa sudo command group
+    - name: add command to sudo command group
       ipasudocmdgroup:
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
