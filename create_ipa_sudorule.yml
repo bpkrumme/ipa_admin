@@ -13,3 +13,5 @@
         allow_sudocmdgroup: "{{ ipa_sudo_cmd_group }}"
         group: "{{ ipa_group_name }}"
         hostgroup: "{{ ipa_hbac_hostgroup_name }}"
+        runasusercategory: "all"
+        runasgroupcategory: "all"
