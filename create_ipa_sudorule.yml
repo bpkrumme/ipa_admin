@@ -12,4 +12,4 @@
         name: "{{ ipa_sudo_rule }}"
         allow_sudocmdgroup: "{{ ipa_sudo_cmd_group }}"
         group: "{{ ipa_group_name }}"
-        hostgroup: " {{ ipa_hbac_hostgroup_name }}"
+        hostgroup: "{{ ipa_hbac_hostgroup_name }}"
