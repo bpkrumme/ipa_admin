@@ -1,4 +1,3 @@
 ---
 collections:
-  - name: freeipa.ansible_freeipa
-    source: https://galaxy.ansible.com
+  - freeipa.ansible_freeipa
