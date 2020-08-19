@@ -14,5 +14,5 @@
         last: "{{ ipa_user_lastname }}"
         phone: "{{ ipa_user_phone_number }}"
         email: "{{ ipa_user_email_address }}"
-        random: yes
+        random: true
         update_password: on_create
