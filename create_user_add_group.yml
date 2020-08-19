@@ -16,6 +16,12 @@
         email: "{{ ipa_user_email_address }}"
         random: yes
         update_password: on_create
+    
+    - name: Create an ipa Group
+      ipagroup:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_group_name }}"
 
     - name: add user to ipa group
       ipagroup:
