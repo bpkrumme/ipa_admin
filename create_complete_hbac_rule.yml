@@ -1,0 +1,33 @@
+---
+- name: Create HBAC rule in freeipa 
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  vars_files: ipa_admin_creds.yml
+  collections:
+    - freeipa.ansible_freeipa
+  tasks:
+    - name: create a HBAC rule
+      ipahbacrule:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_hbac_rule_name }}"
+    - name: add hostgroup to a HBAC rule
+      ipahbacrule:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_hbac_rule_name }}"
+        hostgroup: "{{ ipa_hbac_hostgroup_name }}"
+        action: member
+    - name: add usergroup to a HBAC rule
+      ipahbacrule:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_hbac_rule_name }}"
+        group: "{{ ipa_group_name }}"
+        action: member
+    - name: add service to a HBAC rule
+      ipahbacrule:
+        ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
+        ipaadmin_password: "{{ ipa_admin_password }}"
+        name: "{{ ipa_hbac_rule_name }}"
+        hbacsvc: "{{ ipa_hbac_service_name }}"
+        action: member
