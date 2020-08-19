@@ -11,3 +11,5 @@
         ipaadmin_password: "{{ ipa_admin_password }}"
         name: "{{ ipa_user_name }}"
         state: undeleted
+        random: true
+        update_password: always
