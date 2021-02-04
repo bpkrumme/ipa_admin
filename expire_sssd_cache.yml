@@ -1,0 +1,11 @@
+---
+name: expire the sssd cache and restart sssd
+  hosts: "{{ HOSTS | default('ipaserver') }}"
+  tasks:
+    name: expire the sssd cache
+      command:
+        cmd: 'sss_cache -E'
+    name: restart sssd
+      service:
+        name: sssd
+        state: restarted
