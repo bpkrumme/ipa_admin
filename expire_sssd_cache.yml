@@ -2,10 +2,10 @@
 - name: expire the sssd cache and restart sssd
   hosts: all
   tasks:
-    name: expire the sssd cache
+    - name: expire the sssd cache
       command:
         cmd: 'sss_cache -E'
-    name: restart sssd
+    - name: restart sssd
       service:
         name: sssd
         state: restarted
