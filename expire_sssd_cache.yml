@@ -1,5 +1,5 @@
 ---
-name: expire the sssd cache and restart sssd
+- name: expire the sssd cache and restart sssd
   hosts: "{{ HOSTS | default('ipaserver') }}"
   tasks:
     name: expire the sssd cache
