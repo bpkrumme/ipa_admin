@@ -21,15 +21,13 @@
       ipagroup:
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
-        name: "{{ ipa_group_name | default(omit) }}"
-      when: ipa_group_name is defined
+        name: "{{ ipa_group_name }}"
 
     - name: add user to ipa group
       ipagroup:
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
-        name: "{{ ipa_group_name | default(omit) }}"
+        name: "{{ ipa_group_name }}"
         user:
           - "{{ ipa_user_name }}"
         action: member
-      when: ipa_group_name is defined
