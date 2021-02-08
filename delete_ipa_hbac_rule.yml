@@ -5,7 +5,7 @@
   collections:
     - freeipa.ansible_freeipa
   tasks:
-    - name: create a HBAC rule
+    - name: delete a HBAC rule
       ipahbacrule:
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
