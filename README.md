@@ -18,8 +18,8 @@ If you are using this repository as a project in Ansible Tower, the requirements
 # idm_admin_creds.yml
 You will need to edit the variable file named idm_admin_creds.yml with the ipa_admin_password variable set to your ipa admin password.
 
-> ---
-> ipa_admin_password: \<password\>
+        ---
+        ipa_admin_password: <password>
 
 You should encrypt this file using ansible-vault to ensure the credentials are not stored in clear text.
 
