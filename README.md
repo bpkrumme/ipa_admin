@@ -17,12 +17,13 @@ This will install the collection to the default directory for collections on you
 ### Automatically in Ansible Tower
 If you are using this repository as a project in Ansible Tower, the requirements will be downloaded and installed automatically when a job template is run.  This requires the "ENABLE COLLECTION(S) DOWNLOAD" option to be enabled in Job Settings in Ansible Tower.
 
-# idm_admin_creds.yml
-You will need to edit the variable file named idm_admin_creds.yml with the ipa_admin_password variable set to your ipa admin password.
+# ipa_admin_creds.yml
+You will need to edit the variable file named ipa_admin_creds.yml with the ipa_admin_password variable set to your ipa administrator password.  If you use a service account for administration of your ipa infrastructure, additionally add a line with the ipa_admin_user variable set to the username of the service account.
 
 
 ```
 ---
+# ipa_admin_user: <username>
 ipa_admin_password: <password>
 ```
 
