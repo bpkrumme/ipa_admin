@@ -1,15 +1,13 @@
 ---
-- name: add a sudo command to a command group
+- name: delete a sudo rule in our freeipa instance
   hosts: "{{ HOSTS | default('ipaserver') }}"
   vars_files: ipa_admin_creds.yml
   collections:
     - freeipa.ansible_freeipa
   tasks:
-    - name: add command to sudo command group
-      ipasudocmdgroup:
+    - name: delete an ipa sudo rule
+      ipasudorule:
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
-        name: "{{ ipa_sudo_cmd_group }}"
-        sudocmd: 
-          - "{{ ipa_sudo_command }}"
-        action: member
+        name: "{{ ipa_sudo_rule }}"
+        state: absent

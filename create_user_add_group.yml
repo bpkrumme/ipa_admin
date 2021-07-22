@@ -1,5 +1,5 @@
 ---
-- name: create a user in our freeipa instance and add to an existing group
+- name: create a user in our freeipa instance and add to a new or existing group
   hosts: "{{ HOSTS | default('ipaserver') }}"
   vars_files: ipa_admin_creds.yml
   collections:

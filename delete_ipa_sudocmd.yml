@@ -1,13 +1,13 @@
 ---
-- name: Delete a group in our freeipa instance
+- name: delete a sudo command in our freeipa instance
   hosts: "{{ HOSTS | default('ipaserver') }}"
   vars_files: ipa_admin_creds.yml
   collections:
     - freeipa.ansible_freeipa
   tasks:
-    - name: Delete an ipa Group
-      ipagroup:
+    - name: delete an ipa sudo command
+      ipasudocmd:
         ipaadmin_principal: "{{ ipa_admin_user | default(omit) }}"
         ipaadmin_password: "{{ ipa_admin_password }}"
-        name: "{{ ipa_group_name }}"
-        state: absent        
+        sudocmd: "{{ ipa_sudo_command }}"
+        state: absent
